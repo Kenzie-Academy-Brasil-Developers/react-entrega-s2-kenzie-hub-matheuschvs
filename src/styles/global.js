@@ -74,6 +74,7 @@ export const GlobalStyle = createGlobalStyle`
     --grey-3: #212529;
     --grey-2: #343B41;
     --grey-1: #868E96;
+    --grey-0: #F8F9FA;
     --success: #3FE864;
     --negative: #E83F5B;
 
@@ -83,6 +84,14 @@ export const GlobalStyle = createGlobalStyle`
     --headline: 400 0.75rem 'Inter', sans-serif;
     --headline-bold: 700 0.75rem 'Inter', sans-serif;
     --headline-italic: italic normal 400 0.75rem 'Inter', sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h1, h2, h3 {
+    color: var(--grey-0);
   }
 
   h1 {
