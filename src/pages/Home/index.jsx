@@ -23,7 +23,16 @@ const Home = () => {
           fieldName='email'
           label='Email'
           error={errors.email?.message}
+          type='email'
           placeholder='Digite aqui seu nome'
+        />
+        <TextField
+          register={register}
+          fieldName='password'
+          label='Senha'
+          error={errors.password?.message}
+          type='password'
+          placeholder='Digite aqui sua senha'
         />
       </Form>
     </Container>

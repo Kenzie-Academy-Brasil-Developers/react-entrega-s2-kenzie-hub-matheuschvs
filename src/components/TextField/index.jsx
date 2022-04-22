@@ -1,10 +1,22 @@
 import { useState } from 'react';
 
-import { Container, HelperText, Input, Label } from './style'
+import eyeIcon from '../../assets/eye.svg';
 
-const TextField = ({ register, fieldName, label, error, ...rest }) => {
-  const { onChange, onBlur, name, ref } = register(fieldName);
+import {
+  Container,
+  HelperText,
+  InputWrapper,
+  Input,
+  ToggleVisibility,
+  Icon,
+  Label
+} from './style'
+
+const TextField = ({ type, register, fieldName, label, error, ...rest }) => {
   const [hasContent, setHasContent] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const { onChange, onBlur, name, ref } = register(fieldName);
 
   function handleChange(event) {
     if (event.target.value) {
@@ -19,14 +31,24 @@ const TextField = ({ register, fieldName, label, error, ...rest }) => {
   return (
     <Container>
       <Label>{label}</Label>
-      <Input
-        onChange={(e) => handleChange(e)}
-        onBlur={onBlur}
-        name={name}
-        ref={ref}
-        hasContent={hasContent}
-        {...rest}
-      />
+      <InputWrapper>
+        <Input
+          onChange={(e) => handleChange(e)}
+          onBlur={onBlur}
+          name={name}
+          ref={ref}
+          hasContent={hasContent}
+          type={type === 'password' && isVisible ? 'text' : type}
+          {...rest}
+        />
+        {type === 'password' &&
+          <ToggleVisibility
+            type='button'
+            onClick={() => setIsVisible(!isVisible)}
+          >
+            <Icon src={eyeIcon} alt='an open eye' />
+          </ToggleVisibility>}
+      </InputWrapper>
       {error && <HelperText>{error}</HelperText>}
     </Container>
   )

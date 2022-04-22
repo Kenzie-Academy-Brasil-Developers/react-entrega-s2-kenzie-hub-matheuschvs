@@ -17,6 +17,10 @@ export const Label = styled.label`
   }
 `
 
+export const InputWrapper = styled.div`
+  position: relative;
+`
+
 export const Input = styled.input`
   font: 400 0.8125rem 'Inter', sans-serif;
   line-height: 1.323125rem;
@@ -46,6 +50,20 @@ export const Input = styled.input`
     padding: 0.65625rem 1rem;
     margin-bottom: 1.375rem;
   }
+`
+
+export const ToggleVisibility = styled.button`
+  position: absolute;
+  right: 0.6875rem;
+  top: 16%;
+
+  background: transparent;
+
+  padding: 0;
+`
+
+export const Icon = styled.img`
+
 `
 
 export const HelperText = styled.p`
