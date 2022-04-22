@@ -117,6 +117,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0.515625rem 0;
   }
 
+  input {
+    outline: none;
+  }
+
   @media (min-width: 961px) {
     button {
       line-height: 1.649375rem;

@@ -8,6 +8,8 @@ export const Label = styled.label`
 
   margin-bottom: 1.125rem;
 
+  display: block;
+
   @media (min-width: 961px) {
     font-size: 0.76125rem;
 
@@ -18,20 +20,23 @@ export const Label = styled.label`
 export const Input = styled.input`
   font: 400 0.8125rem 'Inter', sans-serif;
   line-height: 1.323125rem;
-  color: ${props => props.hasContent ? 'var(--grey-0)' : 'var(--grey-1)'};
+  color: var(--grey-0);
 
+  width: 100%;
   padding: 0.52625rem 0.8125rem;
   margin-bottom: 1.125rem;
 
   background: var(--grey-2);
 
-  border: 1.22px solid ${props => props.hasContent ? 'var(--grey-0)' : 'var(--grey-1)'};
+  border: 1.22px solid ${props => props.hasContent ? 'var(--grey-0)' : 'var(--grey-2)'};
   border-radius: 4px;
+
+  &::placeholder {
+    color: var(--grey-1);
+  }
 
   &:focus {
     border-color: var(--grey-0);
-
-    color: var(--grey-0);
   }
 
   @media (min-width: 961px) {
