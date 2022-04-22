@@ -24,7 +24,7 @@ const schema = yup.object().shape({
   // .matches(/^.{8,}$/, 'Mínimo de 8 caracteres')
 })
 
-const Home = () => {
+const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur'
@@ -70,4 +70,4 @@ const Home = () => {
   )
 }
 
-export { Home }
+export { Login }

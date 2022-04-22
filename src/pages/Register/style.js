@@ -12,14 +12,22 @@ export const Container = styled.section`
 `
 
 export const Logo = styled.img`
-  width: 101px;
-  height: 14px;
+  width: 6.3125rem;
+  height: 0.875rem;
 
   margin-bottom: 1.25rem;
+
+  @media (min-width: 961px) {
+    width: 9rem;
+    height: 1.25rem;
+
+    margin-bottom: 2.25rem;
+  }
 `
 
 export const Form = styled.form`
   width: 92.5vw;
+  max-width: 23.0625rem;
   padding: 2.10rem 1.125rem;
 
   background: var(--grey-3);
@@ -53,7 +61,7 @@ export const Title = styled.h1`
   margin-bottom: 1.4375rem;
 `
 
-export const RegisterText = styled.p`
+export const Subtitle = styled.p`
   font: var(--headline-bold);
   font-size: 0.601875rem;
   color: var(--grey-1);
