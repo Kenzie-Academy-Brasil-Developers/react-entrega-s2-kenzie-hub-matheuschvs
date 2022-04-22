@@ -19,6 +19,16 @@ export const Label = styled.label`
 
 export const InputWrapper = styled.div`
   position: relative;
+
+  & + p {
+    margin-top: 1.125rem;
+  }
+
+  @media (min-width: 961px) {
+    & + p {
+      margin-top: 1.375rem;
+    }
+  }
 `
 
 export const Input = styled.input`
@@ -42,19 +52,11 @@ export const Input = styled.input`
     border-color: var(--grey-0);
   }
 
-  & + p {
-    margin-bottom: 1.125rem;
-  }
-
   @media (min-width: 961px) {
     font-size: 1rem;
     line-height: 1.625rem;
 
     padding: 0.65625rem 1rem;
-    
-    & + p {
-      margin-bottom: 1.375rem;
-    }
   }
 `
 
@@ -75,4 +77,8 @@ export const Icon = styled.img`
 export const HelperText = styled.p`
   font: 400 0.625rem 'Inter', sans-serif;
   color: var(--grey-1);
+
+  @media (min-width: 961px) {
+    font-size: 0.75rem;
+  }
 `
