@@ -113,18 +113,9 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
-    line-height: 1.323125rem;
-    padding: 0.515625rem 0;
   }
 
   input {
     outline: none;
-  }
-
-  @media (min-width: 961px) {
-    button {
-      line-height: 1.649375rem;
-      padding: 0.65625rem 0;
-    }
   }
 `;

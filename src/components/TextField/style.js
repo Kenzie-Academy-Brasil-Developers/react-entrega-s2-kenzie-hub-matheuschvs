@@ -61,7 +61,7 @@ export const Input = styled.input`
 export const ToggleVisibility = styled.button`
   position: absolute;
   right: 0.6875rem;
-  top: 0.625rem;
+  top: 0.8rem;
 
   background: transparent;
 
