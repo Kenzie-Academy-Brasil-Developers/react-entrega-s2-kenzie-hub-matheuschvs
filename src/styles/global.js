@@ -66,5 +66,52 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   // my global css
+  :root {
+    --color-primary: #FF577F;
+    --color-primary-50: #FF427F;
+    --color-primary-disable: #59323F;
+    --grey-4: #121214;
+    --grey-3: #212529;
+    --grey-2: #343B41;
+    --grey-1: #868E96;
+    --success: #3FE864;
+    --negative: #E83F5B;
 
+    --title-1: 700 1.125rem 'Inter', sans-serif;
+    --title-2: 700 1rem 'Inter', sans-serif;
+    --title-3: 700 0.875rem 'Inter', sans-serif;
+    --headline: 400 0.75rem 'Inter', sans-serif;
+    --headline-bold: 700 0.75rem 'Inter', sans-serif;
+    --headline-italic: italic normal 400 0.75rem 'Inter', sans-serif;
+  }
+
+  h1 {
+    font: var(--title-1);
+  }
+
+  h2 {
+    font: var(--title-2);
+  }
+
+  h3 {
+    font: var(--title-3);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    line-height: 1.323125rem;
+    padding: 0.515625rem 0;
+  }
+
+  @media (min-width: 961px) {
+    button {
+      line-height: 1.649375rem;
+      padding: 0.65625rem 0;
+    }
+  }
 `;
