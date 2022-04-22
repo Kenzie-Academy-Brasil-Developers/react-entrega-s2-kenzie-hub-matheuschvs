@@ -11,17 +11,32 @@ export const Container = styled.section`
   background: var(--grey-4);
 `
 
+export const Navigation = styled.nav`
+  width: 92.5vw;
+  max-width: 23.0625rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 1.5625rem;
+
+  & > button {
+    max-width: 5rem;
+  }
+
+  @media (min-width: 961px) {
+    margin-bottom: 2rem;
+  }
+`
+
 export const Logo = styled.img`
   width: 6.3125rem;
   height: 0.875rem;
 
-  margin-bottom: 1.25rem;
-
   @media (min-width: 961px) {
     width: 9rem;
     height: 1.25rem;
-
-    margin-bottom: 2.25rem;
   }
 `
 
@@ -39,7 +54,7 @@ export const Form = styled.form`
   }
 
   & > div + button {
-    margin-top: 1.25rem;
+    margin-top: 1rem;
   }
 
   @media (min-width: 961px) {
@@ -48,7 +63,7 @@ export const Form = styled.form`
     }
 
     & > div + button {
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
     }
   }
 `
@@ -67,11 +82,11 @@ export const Subtitle = styled.p`
   color: var(--grey-1);
   text-align: center;
 
-  margin: 1.75rem 0 1.0625rem;
+  margin: 1.125rem 0 1.4375rem;
 
   @media (min-width: 961px) {
     font-size: 0.75rem;
 
-    margin: 2.125rem 0 1.375rem;
+    margin: 1.375rem 0 1.1875rem;
   }
 `

@@ -1,9 +1,9 @@
 import { StyledButton } from './style'
 
-const Button = ({ disabled = false, children, ...rest }) => {
+const Button = ({ greyScale = false, children, ...rest }) => {
   return (
     <StyledButton
-      disabled={disabled}
+      greyScale={greyScale}
       {...rest}
     >{children}</StyledButton>
   )

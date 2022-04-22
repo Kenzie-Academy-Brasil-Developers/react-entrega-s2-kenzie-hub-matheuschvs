@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -17,11 +18,6 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required('Campo obrigatório')
-  // .matches(/(?=.*\d)/, 'Necessário um número')
-  // .matches(/(?=.*[A-Z])/, 'Necessário uma letra maiúscula')
-  // .matches(/(?=.*[a-z])/, 'Necessário uma letra minúscula')
-  // .matches(/(?=.*[!@#$&*])/, 'Necessário um caractere especial')
-  // .matches(/^.{8,}$/, 'Mínimo de 8 caracteres')
 })
 
 const Login = () => {
@@ -29,9 +25,14 @@ const Login = () => {
     resolver: yupResolver(schema),
     mode: 'onBlur'
   });
+  const navigate = useNavigate()
 
   const onFormSubmit = (data) => {
     console.log(data);
+  }
+
+  const handleGoToRegister = () => {
+    navigate('/register')
   }
 
   return (
@@ -45,7 +46,7 @@ const Login = () => {
           label='Email'
           error={errors.email?.message}
           type='email'
-          placeholder='Digite aqui seu nome'
+          placeholder='Digite aqui seu email'
         />
         <TextField
           register={register}
@@ -62,8 +63,9 @@ const Login = () => {
           Ainda não possui uma conta?
         </RegisterText>
         <Button
-          disabled
+          greyScale
           type='button'
+          onClick={() => handleGoToRegister()}
         >Cadastre-se</Button>
       </Form>
     </Container>

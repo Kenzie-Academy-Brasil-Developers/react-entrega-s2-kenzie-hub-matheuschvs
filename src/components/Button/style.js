@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
 
   border-radius: 4px;
 
-  background: ${props => props.disabled ? 'var(--grey-1)' : 'var(--color-primary)'};
+  background: ${props => props.greyScale ? 'var(--grey-1)' : 'var(--color-primary)'};
 
   font: 500 0.8125rem 'Inter', sans-serif;
   color: #FFF;
@@ -13,7 +13,7 @@ export const StyledButton = styled.button`
   padding: 0.515625rem 0;
 
   &:hover {
-    background: ${props => props.disabled ? 'var(--grey-2)' : 'var(--color-primary-50)'};
+    background: ${props => props.greyScale ? 'var(--grey-2)' : 'var(--color-primary-50)'};
   }
 
   @media (min-width: 961px) {
