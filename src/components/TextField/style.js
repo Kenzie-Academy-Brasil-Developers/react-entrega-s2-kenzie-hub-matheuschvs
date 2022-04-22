@@ -28,7 +28,6 @@ export const Input = styled.input`
 
   width: 100%;
   padding: 0.52625rem 0.8125rem;
-  margin-bottom: 1.125rem;
 
   background: var(--grey-2);
 
@@ -43,19 +42,26 @@ export const Input = styled.input`
     border-color: var(--grey-0);
   }
 
+  & + p {
+    margin-bottom: 1.125rem;
+  }
+
   @media (min-width: 961px) {
     font-size: 1rem;
     line-height: 1.625rem;
 
     padding: 0.65625rem 1rem;
-    margin-bottom: 1.375rem;
+    
+    & + p {
+      margin-bottom: 1.375rem;
+    }
   }
 `
 
 export const ToggleVisibility = styled.button`
   position: absolute;
   right: 0.6875rem;
-  top: 16%;
+  top: 0.625rem;
 
   background: transparent;
 

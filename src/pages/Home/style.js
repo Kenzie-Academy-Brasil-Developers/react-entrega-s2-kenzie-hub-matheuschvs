@@ -25,6 +25,24 @@ export const Form = styled.form`
   background: var(--grey-3);
 
   border-radius: 3px;
+
+  & > div + div {
+    margin-top: 1.375rem;
+  }
+
+  & > div + button {
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 961px) {
+    & > div + div {
+      margin-top: 1.6875rem;
+    }
+
+    & > div + button {
+      margin-top: 1.5rem;
+    }
+  }
 `
 
 export const Title = styled.h1`
@@ -41,7 +59,11 @@ export const RegisterText = styled.p`
   color: var(--grey-1);
   text-align: center;
 
+  margin: 1.75rem 0 1.0625rem;
+
   @media (min-width: 961px) {
     font-size: 0.75rem;
+
+    margin: 2.125rem 0 1.375rem;
   }
 `
