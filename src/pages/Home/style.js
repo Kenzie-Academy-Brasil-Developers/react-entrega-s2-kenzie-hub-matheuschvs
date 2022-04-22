@@ -34,3 +34,14 @@ export const Title = styled.h1`
 
   margin-bottom: 1.4375rem;
 `
+
+export const RegisterText = styled.p`
+  font: var(--headline-bold);
+  font-size: 0.601875rem;
+  color: var(--grey-1);
+  text-align: center;
+
+  @media (min-width: 961px) {
+    font-size: 0.75rem;
+  }
+`

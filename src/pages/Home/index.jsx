@@ -4,7 +4,8 @@ import { TextField } from '../../components/TextField'
 
 import logoImg from '../../assets/logo.svg'
 
-import { Container, Form, Logo, Title } from './style'
+import { Container, Form, Logo, RegisterText, Title } from './style'
+import { Button } from '../../components/Button';
 
 const Home = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -34,6 +35,13 @@ const Home = () => {
           type='password'
           placeholder='Digite aqui sua senha'
         />
+        <Button>Entrar</Button>
+        <RegisterText>
+          Ainda não possui uma conta?
+        </RegisterText>
+        <Button
+          disabled
+        >Cadastre-se</Button>
       </Form>
     </Container>
   )
