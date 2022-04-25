@@ -1,7 +1,10 @@
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+
+import { API } from '../../config/api'
 
 import { TextField } from '../../components/TextField'
 import { Button } from '../../components/Button';
@@ -27,8 +30,14 @@ const Login = () => {
   });
   const navigate = useNavigate()
 
-  const onFormSubmit = (data) => {
-    console.log(data);
+  const onFormSubmit = async (data) => {
+    try {
+      const response = await API.post('sessions', data);
+
+      console.log(response);
+    } catch (err) {
+      toast.error('Erro ao fazer login, tente novamente.')
+    }
   }
 
   const handleGoToRegister = () => {

@@ -78,6 +78,11 @@ export const GlobalStyle = createGlobalStyle`
     --success: #3FE864;
     --negative: #E83F5B;
 
+    --toastify-color-error: var(--negative);
+    --toastify-color-success: var(--success);
+    --toastify-text-color-dark: var(--grey-0);
+    --toastify-color-dark: var(--grey-2);
+
     --title-1: 700 1.125rem 'Inter', sans-serif;
     --title-2: 700 1rem 'Inter', sans-serif;
     --title-3: 700 0.875rem 'Inter', sans-serif;
@@ -117,5 +122,9 @@ export const GlobalStyle = createGlobalStyle`
 
   input {
     outline: none;
+  }
+
+  .Toastify__toast {
+    font: var(--title-3);
   }
 `;
