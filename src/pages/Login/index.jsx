@@ -34,9 +34,13 @@ const Login = () => {
     try {
       const response = await API.post('sessions', data);
 
-      console.log(response);
+      const { token } = response.data;
+
+      localStorage.setItem('@kenziehub:token', token);
+      toast.success('Login realizado com sucesso.')
+      navigate('/home')
     } catch (err) {
-      toast.error('Erro ao fazer login, tente novamente.')
+      toast.error('Ops! algo deu errado.')
     }
   }
 
