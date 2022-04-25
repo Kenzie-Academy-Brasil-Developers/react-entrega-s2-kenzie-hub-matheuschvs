@@ -33,6 +33,14 @@ export const Container = styled.div`
     color: var(--grey-0);
     font: 400 0.8125rem 'Inter', sans-serif;
   }
+
+  .react-select__option--is-selected {
+    background: var(--grey-3);
+  }
+
+  .react-select__option--is-focused {
+    background: var(--grey-1);
+  }
 `
 
 export const Label = styled.label`
