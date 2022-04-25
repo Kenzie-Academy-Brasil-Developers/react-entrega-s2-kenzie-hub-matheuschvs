@@ -12,7 +12,7 @@ import {
   Label
 } from './style'
 
-const TextField = ({ type, register, fieldName, label, error, ...rest }) => {
+const TextField = ({ type = 'text', register, fieldName, label, error, ...rest }) => {
   const [hasContent, setHasContent] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
