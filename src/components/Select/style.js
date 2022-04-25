@@ -41,6 +41,12 @@ export const Container = styled.div`
   .react-select__option--is-focused {
     background: var(--grey-1);
   }
+
+  @media (min-width: 961px) {
+    .react-select__control {
+      min-height: 49px;
+    }
+  }
 `
 
 export const Label = styled.label`

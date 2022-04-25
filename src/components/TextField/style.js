@@ -68,6 +68,10 @@ export const ToggleVisibility = styled.button`
   background: transparent;
 
   padding: 0;
+
+  @media (min-width: 961px) {
+    top: 1.1rem;
+  }
 `
 
 export const Icon = styled.img`
