@@ -30,9 +30,10 @@ const TextField = ({ type, register, fieldName, label, error, ...rest }) => {
 
   return (
     <Container>
-      <Label>{label}</Label>
+      <Label htmlFor={fieldName} >{label}</Label>
       <InputWrapper>
         <Input
+          id={fieldName}
           onChange={(e) => handleChange(e)}
           onBlur={onBlur}
           name={name}
