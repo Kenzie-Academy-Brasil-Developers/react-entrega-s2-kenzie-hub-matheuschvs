@@ -9,6 +9,9 @@ export const Container = styled.section`
   min-height: 100vh;
 
   background: var(--grey-4);
+
+  padding: 2rem 0;
+  overflow-y: auto;
 `
 
 export const Navigation = styled.nav`
