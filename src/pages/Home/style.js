@@ -37,3 +37,11 @@ export const TechList = styled.ul`
 
   padding: 1.375rem 0.53125rem;
 `
+
+export const EmptyTechs = styled.li``
+
+export const EmptyText = styled.p`
+  font: var(--headline-bold);
+  color: var(--grey-1);
+  text-align: center;
+`
