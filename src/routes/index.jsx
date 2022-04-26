@@ -7,6 +7,7 @@ import { Home } from '../pages/Home';
 
 const Router = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('@kenziehub:token')
@@ -14,11 +15,13 @@ const Router = () => {
 
     if (token && user) {
       setIsAuthenticated(true);
+      setUser(user);
     }
   }, [])
 
   const signIn = ({ token, user }) => {
     setIsAuthenticated(true);
+    setUser(user);
 
     localStorage.setItem('@kenziehub:token', token);
     localStorage.setItem('@kenziehub:user', JSON.stringify(user));
@@ -26,6 +29,7 @@ const Router = () => {
 
   const signOut = () => {
     setIsAuthenticated(false);
+    setUser(null);
 
     localStorage.clear();
   }
@@ -42,7 +46,7 @@ const Router = () => {
       />
       <Route
         path="home"
-        element={<Home isAuthenticated={isAuthenticated} signOut={signOut} />}
+        element={<Home isAuthenticated={isAuthenticated} user={user} signOut={signOut} />}
       />
     </Routes>
   )
