@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 export const Item = styled.li`
+`
+
+export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
+  width: 100%;
   padding: 0.75rem;
 
   border-radius: 4px;

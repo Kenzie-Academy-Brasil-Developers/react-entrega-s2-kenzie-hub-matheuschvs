@@ -52,10 +52,21 @@ const schema = yup.object().shape({
 const Home = ({ isAuthenticated, user, signOut }) => {
   const [techs, setTechs] = useState([]);
   const [isCreationModalOpen, setIsCreationModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+
   const location = useLocation();
   const { control, handleSubmit, register, formState: { errors } } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(schema)
+  });
+  const { control: updateControl,
+    handleSubmit: updateHandleSubmit,
+    register: updateRegister,
+    formState: { errors: updateErrors },
+    setValue
+  } = useForm({
+    mode: 'onBlur',
+    resolver: yupResolver(schema),
   });
 
   useEffect(() => {
@@ -100,6 +111,31 @@ const Home = ({ isAuthenticated, user, signOut }) => {
     }
   }
 
+  const handleUpdateTech = async ({ id, title, status }) => {
+    const dataToSend = {
+      title,
+      status: status.value
+    }
+
+    console.log(dataToSend)
+
+    try {
+      const token = localStorage.getItem('@kenziehub:token');
+
+      await API.put(`users/techs/${id}`, dataToSend, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      setIsUpdateModalOpen(false);
+      toast.success('Tecnologia atualizada com sucesso!');
+      updateTechs();
+    } catch (err) {
+      toast.error('Erro ao atualizar tecnologia')
+    }
+  }
+
   return (
     isAuthenticated ?
       <Container>
@@ -131,6 +167,39 @@ const Home = ({ isAuthenticated, user, signOut }) => {
             </Button>
           </ModalBody>
         </ReactModal>
+        <ReactModal
+          isOpen={isUpdateModalOpen}
+        >
+          <ModalHeader>
+            <ModalTitle>Tecnologia Detalhes</ModalTitle>
+            <CloseModalButton
+              onClick={() => setIsUpdateModalOpen(false)}
+            >x</CloseModalButton>
+          </ModalHeader>
+          <ModalBody onSubmit={updateHandleSubmit(handleUpdateTech)}>
+            <TextField
+              label='Nome do projeto'
+              register={updateRegister}
+              fieldName='title'
+              error={updateErrors.title?.message}
+            />
+            <TextField
+              register={updateRegister}
+              fieldName='id'
+              type='hidden'
+            />
+            <Select
+              label='Status'
+              control={updateControl}
+              fieldName='status'
+              options={options}
+              error={updateErrors.status?.message}
+            />
+            <Button type='submit'>
+              Salvar alterações
+            </Button>
+          </ModalBody>
+        </ReactModal>
         <Navbar signOut={signOut} />
         <Header user={user} />
         <Content>
@@ -143,7 +212,14 @@ const Home = ({ isAuthenticated, user, signOut }) => {
           <TechList>
             {techs.length > 0 ?
               techs.map(({ id, title, status }) => (
-                <TechItem key={id} title={title} status={status} />
+                <TechItem
+                  key={id}
+                  techId={id}
+                  title={title}
+                  status={status}
+                  setIsOpen={setIsUpdateModalOpen}
+                  setValue={setValue}
+                />
               )) :
               <EmptyTechs>
                 <EmptyText>Nenhuma tecnologia foi encontrada.</EmptyText>

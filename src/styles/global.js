@@ -132,6 +132,8 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: rgba(18, 18, 20, 0.5) !important;
   }
 
   .ReactModal__Content {
@@ -140,6 +142,8 @@ export const GlobalStyle = createGlobalStyle`
     background: var(--grey-3) !important;
 
     padding: 0 !important;
+
+    border-color: var(--grey-2);
 
     width: 92.5vw;
     max-width: 23.125rem;
