@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { API } from '../../config/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -71,7 +71,7 @@ const options = [
   },
 ]
 
-const Register = () => {
+const Register = ({ isAuthenticated }) => {
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur'
@@ -105,77 +105,79 @@ const Register = () => {
   }
 
   return (
-    <Container>
-      <Navigation>
-        <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
-        <SecondaryButton
-          onClick={handleGoBack}
-        >
-          Voltar
-        </SecondaryButton>
-      </Navigation>
-      <Form onSubmit={handleSubmit(onFormSubmit)}>
-        <Title>Crie sua conta</Title>
-        <Subtitle>
-          Rápido e grátis, vamos nessa
-        </Subtitle>
-        <TextField
-          register={register}
-          fieldName='name'
-          label='Nome'
-          error={errors.name?.message}
-          type='text'
-          placeholder='Digite aqui seu nome'
-        />
-        <TextField
-          register={register}
-          fieldName='email'
-          label='Email'
-          error={errors.email?.message}
-          type='email'
-          placeholder='Digite aqui seu email'
-        />
-        <TextField
-          register={register}
-          fieldName='bio'
-          label='Biografia'
-          error={errors.bio?.message}
-          placeholder='Digite aqui sua biografia'
-        />
-        <TextField
-          register={register}
-          fieldName='contact'
-          label='Contato'
-          error={errors.contact?.message}
-          placeholder='Digite aqui sua forma de contato'
-        />
-        <TextField
-          register={register}
-          fieldName='password'
-          label='Senha'
-          error={errors.password?.message}
-          type='password'
-          placeholder='Digite aqui sua senha'
-        />
-        <TextField
-          register={register}
-          fieldName='confirmPassword'
-          label='Confirmar senha'
-          error={errors.confirmPassword?.message}
-          type='password'
-          placeholder='Digite novamente sua senha'
-        />
-        <Select
-          label='Selecionar módulo'
-          control={control}
-          options={options}
-          fieldName='course_module'
-        />
-        <Button
-          type='submit'
-        >Cadastrar</Button>
-      </Form>
-    </Container>
+    isAuthenticated ?
+      <Navigate to='/home' /> :
+      <Container>
+        <Navigation>
+          <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
+          <SecondaryButton
+            onClick={handleGoBack}
+          >
+            Voltar
+          </SecondaryButton>
+        </Navigation>
+        <Form onSubmit={handleSubmit(onFormSubmit)}>
+          <Title>Crie sua conta</Title>
+          <Subtitle>
+            Rápido e grátis, vamos nessa
+          </Subtitle>
+          <TextField
+            register={register}
+            fieldName='name'
+            label='Nome'
+            error={errors.name?.message}
+            type='text'
+            placeholder='Digite aqui seu nome'
+          />
+          <TextField
+            register={register}
+            fieldName='email'
+            label='Email'
+            error={errors.email?.message}
+            type='email'
+            placeholder='Digite aqui seu email'
+          />
+          <TextField
+            register={register}
+            fieldName='bio'
+            label='Biografia'
+            error={errors.bio?.message}
+            placeholder='Digite aqui sua biografia'
+          />
+          <TextField
+            register={register}
+            fieldName='contact'
+            label='Contato'
+            error={errors.contact?.message}
+            placeholder='Digite aqui sua forma de contato'
+          />
+          <TextField
+            register={register}
+            fieldName='password'
+            label='Senha'
+            error={errors.password?.message}
+            type='password'
+            placeholder='Digite aqui sua senha'
+          />
+          <TextField
+            register={register}
+            fieldName='confirmPassword'
+            label='Confirmar senha'
+            error={errors.confirmPassword?.message}
+            type='password'
+            placeholder='Digite novamente sua senha'
+          />
+          <Select
+            label='Selecionar módulo'
+            control={control}
+            options={options}
+            fieldName='course_module'
+          />
+          <Button
+            type='submit'
+          >Cadastrar</Button>
+        </Form>
+      </Container>
   )
 }
 

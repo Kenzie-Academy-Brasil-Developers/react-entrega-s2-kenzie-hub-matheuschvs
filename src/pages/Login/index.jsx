@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -23,22 +23,26 @@ const schema = yup.object().shape({
     .required('Campo obrigatório')
 })
 
-const Login = () => {
+const Login = ({ isAuthenticated, signIn }) => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur'
   });
   const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || '/home';
 
   const onFormSubmit = async (data) => {
     try {
       const response = await API.post('sessions', data);
 
-      const { token } = response.data;
+      const { token, user } = response.data;
 
-      localStorage.setItem('@kenziehub:token', token);
-      toast.success('Login realizado com sucesso.')
-      navigate('/home')
+      signIn({ token, user });
+
+      toast.success('Login realizado com sucesso.');
+      navigate(from, { replace: true });
     } catch (err) {
       toast.error('Ops! algo deu errado.')
     }
@@ -49,39 +53,41 @@ const Login = () => {
   }
 
   return (
-    <Container>
-      <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
-      <Form onSubmit={handleSubmit(onFormSubmit)}>
-        <Title>Login</Title>
-        <TextField
-          register={register}
-          fieldName='email'
-          label='Email'
-          error={errors.email?.message}
-          type='email'
-          placeholder='Digite aqui seu email'
-        />
-        <TextField
-          register={register}
-          fieldName='password'
-          label='Senha'
-          error={errors.password?.message}
-          type='password'
-          placeholder='Digite aqui sua senha'
-        />
-        <Button
-          type='submit'
-        >Entrar</Button>
-        <RegisterText>
-          Ainda não possui uma conta?
-        </RegisterText>
-        <Button
-          greyScale
-          type='button'
-          onClick={() => handleGoToRegister()}
-        >Cadastre-se</Button>
-      </Form>
-    </Container>
+    isAuthenticated ?
+      <Navigate to='/home' /> :
+      <Container>
+        <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
+        <Form onSubmit={handleSubmit(onFormSubmit)}>
+          <Title>Login</Title>
+          <TextField
+            register={register}
+            fieldName='email'
+            label='Email'
+            error={errors.email?.message}
+            type='email'
+            placeholder='Digite aqui seu email'
+          />
+          <TextField
+            register={register}
+            fieldName='password'
+            label='Senha'
+            error={errors.password?.message}
+            type='password'
+            placeholder='Digite aqui sua senha'
+          />
+          <Button
+            type='submit'
+          >Entrar</Button>
+          <RegisterText>
+            Ainda não possui uma conta?
+          </RegisterText>
+          <Button
+            greyScale
+            type='button'
+            onClick={() => handleGoToRegister()}
+          >Cadastre-se</Button>
+        </Form>
+      </Container>
   )
 }
 
