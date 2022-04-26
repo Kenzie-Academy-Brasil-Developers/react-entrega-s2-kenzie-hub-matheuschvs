@@ -108,7 +108,9 @@ const Register = ({ isAuthenticated }) => {
     isAuthenticated ?
       <Navigate to='/home' /> :
       <Container>
-        <Navigation>
+        <Navigation
+          animate={{ scaleX: [0, 2, 1.1] }}
+        >
           <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
           <SecondaryButton
             onClick={handleGoBack}
@@ -116,7 +118,13 @@ const Register = ({ isAuthenticated }) => {
             Voltar
           </SecondaryButton>
         </Navigation>
-        <Form onSubmit={handleSubmit(onFormSubmit)}>
+        <Form
+          onSubmit={handleSubmit(onFormSubmit)}
+          animate={{
+            scaleX: [0, 0, 0, 1.2, 1.1],
+            translateY: [1000, 0]
+          }}
+        >
           <Title>Crie sua conta</Title>
           <Subtitle>
             Rápido e grátis, vamos nessa

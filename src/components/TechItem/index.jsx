@@ -10,7 +10,10 @@ const TechItem = ({ title, techId, status, setIsOpen, setValue }) => {
 
   return (
     <Item>
-      <Button onClick={handleOpenModal}>
+      <Button
+        onClick={handleOpenModal}
+        whileHover={{ scale: 1.02 }}
+      >
         <Title>{title}</Title>
         <Status>{status}</Status>
       </Button>

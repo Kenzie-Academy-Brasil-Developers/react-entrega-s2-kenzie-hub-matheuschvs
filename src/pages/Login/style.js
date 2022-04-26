@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Container = styled.section`
   display: flex;
@@ -11,7 +12,7 @@ export const Container = styled.section`
   background: var(--grey-4);
 `
 
-export const Logo = styled.img`
+export const Logo = styled(motion.img)`
   width: 6.3125rem;
   height: 0.875rem;
 
@@ -25,7 +26,7 @@ export const Logo = styled.img`
   }
 `
 
-export const Form = styled.form`
+export const Form = styled(motion.form)`
   width: 92.5vw;
   max-width: 23.0625rem;
   padding: 2.10rem 1.125rem;

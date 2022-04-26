@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Container = styled.section`
   display: flex;
@@ -14,7 +15,7 @@ export const Container = styled.section`
   overflow-y: auto;
 `
 
-export const Navigation = styled.nav`
+export const Navigation = styled(motion.nav)`
   width: 92.5vw;
   max-width: 23.0625rem;
 
@@ -43,7 +44,7 @@ export const Logo = styled.img`
   }
 `
 
-export const Form = styled.form`
+export const Form = styled(motion.form)`
   width: 92.5vw;
   max-width: 23.0625rem;
   padding: 2.10rem 1.125rem;

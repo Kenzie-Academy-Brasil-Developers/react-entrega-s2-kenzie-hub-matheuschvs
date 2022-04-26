@@ -56,8 +56,21 @@ const Login = ({ isAuthenticated, signIn }) => {
     isAuthenticated ?
       <Navigate to='/home' /> :
       <Container>
-        <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
-        <Form onSubmit={handleSubmit(onFormSubmit)}>
+        <Logo
+          src={logoImg}
+          alt='Logo with Text: Kenzie Hub'
+          animate={{
+            translateY: [-1000, 0],
+          }}
+          transition={{ duration: 1 }}
+        />
+        <Form
+          onSubmit={handleSubmit(onFormSubmit)}
+          animate={{
+            translateY: [1000, 0],
+          }}
+          transition={{ duration: 1 }}
+        >
           <Title>Login</Title>
           <TextField
             register={register}

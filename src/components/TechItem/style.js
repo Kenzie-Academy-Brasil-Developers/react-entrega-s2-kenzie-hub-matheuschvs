@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import { motion } from "framer-motion"
 
 export const Item = styled.li`
 `
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,6 +14,7 @@ export const Button = styled.button`
 
   border-radius: 4px;
 
+  border: 1px solid var(--grey-4);
   background: var(--grey-4);
 
   &:hover {
