@@ -21,6 +21,7 @@ import {
   ModalTitle,
   CloseModalButton,
   ModalBody,
+  ModalButtons,
   Content,
   ContentHeader,
   ListTitle,
@@ -63,7 +64,8 @@ const Home = ({ isAuthenticated, user, signOut }) => {
     handleSubmit: updateHandleSubmit,
     register: updateRegister,
     formState: { errors: updateErrors },
-    setValue
+    setValue,
+    getValues
   } = useForm({
     mode: 'onBlur',
     resolver: yupResolver(schema),
@@ -136,6 +138,26 @@ const Home = ({ isAuthenticated, user, signOut }) => {
     }
   }
 
+  const handleRemoveTech = async () => {
+    const id = getValues('id');
+
+    try {
+      const token = localStorage.getItem('@kenziehub:token');
+
+      await API.delete(`users/techs/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+
+      setIsUpdateModalOpen(false);
+      toast.success('Tecnologia removida com sucesso!');
+      updateTechs();
+    } catch (err) {
+      toast.error('Erro ao remover tecnologia')
+    }
+  }
+
   return (
     isAuthenticated ?
       <Container>
@@ -195,9 +217,18 @@ const Home = ({ isAuthenticated, user, signOut }) => {
               options={options}
               error={updateErrors.status?.message}
             />
-            <Button type='submit'>
-              Salvar alterações
-            </Button>
+            <ModalButtons>
+              <Button type='submit'>
+                Salvar alterações
+              </Button>
+              <Button
+                type='button'
+                greyScale
+                onClick={handleRemoveTech}
+              >
+                Excluir
+              </Button>
+            </ModalButtons>
           </ModalBody>
         </ReactModal>
         <Navbar signOut={signOut} />

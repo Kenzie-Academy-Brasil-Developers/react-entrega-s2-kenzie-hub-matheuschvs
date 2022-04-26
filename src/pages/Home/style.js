@@ -77,7 +77,19 @@ export const ModalBody = styled.form`
     margin-top: 1.25rem;
   }
 
+  & > div + footer,
   & > div + button {
     margin-top: 1rem;
+  }
+`
+
+export const ModalButtons = styled.footer`
+  display: flex;
+  align-items: center;
+
+  & > button + button {
+    margin-left: 1.375rem;
+
+    max-width: 6.125rem;
   }
 `
