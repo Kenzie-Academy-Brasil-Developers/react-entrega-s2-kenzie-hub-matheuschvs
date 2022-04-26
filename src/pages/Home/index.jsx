@@ -3,6 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
 import { Header } from "../../components/Header";
 import { SecondaryButton } from "../../components/SecondaryButton";
+import { TechItem } from "../../components/TechItem";
 
 import { Container, Content, ContentHeader, ListTitle, TechList } from './style';
 
@@ -20,7 +21,7 @@ const Home = ({ isAuthenticated, user, signOut }) => {
             <SecondaryButton>+</SecondaryButton>
           </ContentHeader>
           <TechList>
-            <li><h3>React JS</h3></li>
+            <TechItem title='React JS' status='Intermediário' />
           </TechList>
         </Content>
       </Container> :
