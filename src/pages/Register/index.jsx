@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { API } from '../../config/api';
 import { useNavigate, Navigate } from 'react-router-dom';
@@ -72,11 +73,16 @@ const options = [
 ]
 
 const Register = ({ isAuthenticated }) => {
+  const [width, setWidth] = useState(0);
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onBlur'
   });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, [])
 
   const onFormSubmit = async ({
     name, email, password, course_module, bio, contact
@@ -109,7 +115,7 @@ const Register = ({ isAuthenticated }) => {
       <Navigate to='/home' /> :
       <Container>
         <Navigation
-          animate={{ scaleX: [0, 2, 1.1] }}
+          animate={{ scaleX: width >= 961 ? [0, 2, 1.1] : [0, 2, 1.1, 1] }}
         >
           <Logo src={logoImg} alt='Logo with Text: Kenzie Hub' />
           <SecondaryButton
@@ -121,7 +127,7 @@ const Register = ({ isAuthenticated }) => {
         <Form
           onSubmit={handleSubmit(onFormSubmit)}
           animate={{
-            scaleX: [0, 0, 0, 1.2, 1.1],
+            scaleX: width >= 961 ? [0, 0, 0, 1.2, 1.1] : [0, 0, 0, 1.2, 1.1, 1],
             translateY: [1000, 0]
           }}
         >
