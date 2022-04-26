@@ -50,6 +50,13 @@ const schema = yup.object().shape({
     .required('Campo obrigatório'),
 });
 
+const updateSchema = yup.object().shape({
+  title: yup.string().nullable(),
+  status: yup
+    .object()
+    .required('Campo obrigatório'),
+});
+
 const Home = ({ isAuthenticated, user, signOut }) => {
   const [techs, setTechs] = useState([]);
   const [isCreationModalOpen, setIsCreationModalOpen] = useState(false);
@@ -68,7 +75,7 @@ const Home = ({ isAuthenticated, user, signOut }) => {
     getValues
   } = useForm({
     mode: 'onBlur',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(updateSchema),
   });
 
   useEffect(() => {
@@ -113,13 +120,10 @@ const Home = ({ isAuthenticated, user, signOut }) => {
     }
   }
 
-  const handleUpdateTech = async ({ id, title, status }) => {
+  const handleUpdateTech = async ({ id, status }) => {
     const dataToSend = {
-      title,
       status: status.value
     }
-
-    console.log(dataToSend)
 
     try {
       const token = localStorage.getItem('@kenziehub:token');
@@ -204,6 +208,7 @@ const Home = ({ isAuthenticated, user, signOut }) => {
               register={updateRegister}
               fieldName='title'
               error={updateErrors.title?.message}
+              disabled
             />
             <TextField
               register={updateRegister}

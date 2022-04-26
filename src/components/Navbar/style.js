@@ -22,6 +22,10 @@ export const Content = styled.div`
     line-height: 1.8125rem;
     font-size: 0.75rem;
   }
+
+  @media (min-width: 961px) {
+    padding: 1.25rem 23.26vw;
+  }
 `
 
 export const Logo = styled.img`

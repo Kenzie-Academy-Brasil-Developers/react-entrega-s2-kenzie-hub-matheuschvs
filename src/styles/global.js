@@ -118,6 +118,8 @@ export const GlobalStyle = createGlobalStyle`
   button {
     cursor: pointer;
     border: none;
+
+    transition: all 0.2s;
   }
 
   input {
@@ -143,7 +145,7 @@ export const GlobalStyle = createGlobalStyle`
 
     padding: 0 !important;
 
-    border-color: var(--grey-2);
+    border-color: var(--grey-2) !important;
 
     width: 92.5vw;
     max-width: 23.125rem;

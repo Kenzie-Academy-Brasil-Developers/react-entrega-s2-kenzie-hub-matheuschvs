@@ -10,6 +10,10 @@ export const Content = styled.main`
   background: var(--grey-4);
 
   padding: 1.25rem 0.75rem 1rem;
+
+  @media (min-width: 961px) {
+    padding: 1.25rem 23.26vw 2.5rem;
+  }
 `
 
 export const ContentHeader = styled.section`
@@ -39,6 +43,10 @@ export const TechList = styled.ul`
 
   & > li + li {
     margin-top: 1rem;
+  }
+
+  @media (min-width: 961px) {
+    padding: 1.375rem 1.125rem;
   }
 `
 
@@ -80,6 +88,15 @@ export const ModalBody = styled.form`
   & > div + footer,
   & > div + button {
     margin-top: 1rem;
+  }
+
+  @media (min-width: 961px) {
+    padding: 2rem 1.375rem;
+
+    & > div + footer,
+    & > div + button {
+      margin-top: 1.25rem;
+    }
   }
 `
 
