@@ -5,11 +5,11 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
-    <>
+    <div className='App'>
       <ToastContainer theme='dark' />
       <GlobalStyle />
       <Router />
-    </>
+    </div>
   );
 }
 

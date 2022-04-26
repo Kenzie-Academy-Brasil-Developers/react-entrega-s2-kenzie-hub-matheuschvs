@@ -127,4 +127,21 @@ export const GlobalStyle = createGlobalStyle`
   .Toastify__toast {
     font: var(--title-3);
   }
+
+  .ReactModal__Overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ReactModal__Content {
+    position: initial !important;
+    inset: unset !important;
+    background: var(--grey-3) !important;
+
+    padding: 0 !important;
+
+    width: 92.5vw;
+    max-width: 23.125rem;
+  }
 `;
